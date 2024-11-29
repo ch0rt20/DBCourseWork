@@ -18,52 +18,63 @@ app.get('/main_menu', function(req, res) {
 		<!DOCTYPE html>
 		<html lang="ru">
 			<head>
-				<link rel="stylesheet" href="./styles/styles.css" />
+				<title>Веб-интерфейс базы данных</title>
 			</head>
 			<body>
 				<header>
-					<h3>Учёт таблиц в базе данных</h3>
-					<nav>
-						<form method="get" action="/city_db">
-							<button> Учёт городов </button><br />
-						</form>
-						<form method="get" action="/category_db">
-							<button> Учёт рубрик </button><br />
-						</form>
-						<form method="get" action="/organisation_db">
-							<button> Учёт организаций </button><br />
-						</form>	
-						<form method="get" action="/person_db">	
-							<button> Учёт физических лиц </button><br />
-						</form>	
-						<form method="get" action="/organisation_phone_number_db">	
-							<button> Учёт номеров организаций </button><br />
-						</form>
-						<hr />
-					</nav>
-					<h3>Отчёты</h3>
-					<nav>
-						<form method="get" action="/city_phone_codes">
-							<button> Список телефонных кодов городов</button><br />
-						</form>
-						<form method="get" action="/city_selection">
-							<button type = submit> Список физических лиц выбранного города</button><br />
-						</form>
-						<form method="get" action="/cities_and_organisations">
-							<button> Список всех организаций городов</button><br />
-						</form>
-						<form method="get" action="/category_selection">
-							<button> Список организаций выбранного города и рубрики </button><br />
-						</form>
-					</nav>
+					<h2>Телефонный справочник физических лиц и организаций</h1>
+					<p>Работа выполнена студентом АСУб-20-1 Устюжаниным Вадимом</p>
 				</header>
 				<main>
 					<article>
+						<hr/>
 						<section>
+							<h3>Доступ к базам данных</h2>
+							<nav>
+								<form method="get" action="/city_db">
+									<button> Учёт городов </button><br />
+								</form>
+								<form method="get" action="/category_db">
+									<button> Учёт рубрик </button><br />
+								</form>
+								<form method="get" action="/organisation_db">
+									<button> Учёт организаций </button><br />
+								</form>	
+								<form method="get" action="/person_db">	
+									<button> Учёт физических лиц </button><br />
+								</form>	
+								<form method="get" action="/organisation_phone_number_db">	
+									<button> Учёт номеров организаций </button><br />
+								</form>
+							</nav>
 						</section>
+						<br/>
+						<hr/>
+						<section>
+							<h3>Доступ к отчётам</h2>
+							<nav>
+								<form method="get" action="/city_phone_codes">
+									<button> Список телефонных кодов городов</button><br />
+								</form>
+								<form method="get" action="/city_selection">
+									<button type = submit> Список физических лиц выбранного города</button><br />
+								</form>
+								<form method="get" action="/cities_and_organisations">
+									<button> Список всех организаций городов</button><br />
+								</form>
+								<form method="get" action="/category_selection">
+									<button> Список организаций выбранного города и рубрики </button><br />
+								</form>
+							</nav>
+						</section>
+						<br/>
+						<hr/>
+						<br/>
 					</article>
 				</main>
 				<footer>
+					<span>Работа выполнена с использованием сервера Express, средств разработки Node.js,</span><br/>
+					<span>языка программирования JavaScript и системы управления базами данных MySQL.</span>
 				</footer>
 			</body>
 		</html>`);
@@ -81,6 +92,7 @@ app.get('/city_db', async function(req, res) {
 		<!DOCTYPE html>
 		<html lang="ru">
 			<head>
+				<title>Веб-интерфейс базы данных</title>
 				<link rel="stylesheet" href="styles.css" />
 				<nav>
 					<form method="get" action="/main_menu">
@@ -98,12 +110,15 @@ app.get('/city_db', async function(req, res) {
 				<main>
 					<article>
 						<section>
+							<span>Добавление города</span>
 							<form method="post" action="/add_city">
 								<input type="text" placeholder="Название города" name="cityName" required/>
 								<input type="text" placeholder="Код номера" name="phoneCode" required/>
 								<input type="text" placeholder="Название страны" name="countryName" required/>
 								<button type = submit>Добавить</button>
 							</form>
+							<br/>
+							<hr/>
 							<table>
 							<tr>
 								<th scope="col">Название города</th>
@@ -119,7 +134,7 @@ app.get('/city_db', async function(req, res) {
 									<td><a href='/delete_city/${City.cityName}'>delete</a></td>
 								</tr>
 							`).join('')}
-						</table>
+							</table>
 						</section>
 					</article>
 				</main>
@@ -158,6 +173,7 @@ app.get('/category_db', async function(req, res) {
 		<!DOCTYPE html>
 		<html lang="ru">
 			<head>
+				<title>Веб-интерфейс базы данных</title>
 				<link rel="stylesheet" href="styles.css" />
 				<nav>
 					<form method="get" action="/main_menu">
@@ -175,10 +191,13 @@ app.get('/category_db', async function(req, res) {
 				<main>
 					<article>
 						<section>
+							<span>Добавление рубрик</span>
 							<form method="post" action="/add_category">
-								<input type="text" placeholder="Название категории" name="categoryName" required/>
+								<input type="text" placeholder="Название рубрики" name="categoryName" required/>
 								<button type = submit>Добавить</button>
 							</form>
+							<br/>
+							<hr/>
 							<table>
 							<tr>
 								<th scope="col">ID Категории</th>
@@ -231,6 +250,7 @@ app.get('/organisation_db', async function(req, res) {
 		<!DOCTYPE html>
 		<html lang="ru">
 			<head>
+				<title>Веб-интерфейс базы данных</title>
 				<link rel="stylesheet" href="styles.css" />
 				<nav>
 					<form method="get" action="/main_menu">
@@ -248,6 +268,7 @@ app.get('/organisation_db', async function(req, res) {
 				<main>
 					<article>
 						<section>
+							<span>Добавление организаций</span>
 							<form method="post" action="/add_organisation">
 								<input type="text" placeholder="Название организации" name="organisationName" required/>
 								<select name="org_cityName" id="org_cityName" required>
@@ -262,6 +283,8 @@ app.get('/organisation_db', async function(req, res) {
 								<input type="text" placeholder="Здание" name="building" required/>
 								<button type = submit>Добавить</button>
 							</form>
+							<br/>
+							<hr/>
 							<table>
 							<tr>
 								<th scope="col">Название организации</th>
@@ -322,6 +345,7 @@ app.get('/person_db', async function(req, res) {
 		<!DOCTYPE html>
 		<html lang="ru">
 			<head>
+				<title>Веб-интерфейс базы данных</title>
 				<link rel="stylesheet" href="styles.css" />
 				<nav>
 					<form method="get" action="/main_menu">
@@ -339,6 +363,7 @@ app.get('/person_db', async function(req, res) {
 				<main>
 					<article>
 						<section>
+							<span>Добавление физических лиц</span>
 							<form method="post" action="/add_person">
 								<select name="per_cityName" id="per_cityName" required>
 									<option type = "text" value="">Выберите город из списка</option>
@@ -350,6 +375,8 @@ app.get('/person_db', async function(req, res) {
 								<input type="text" placeholder="Номер телефона" name="personPhoneNumber" required/>
 								<button type = submit>Добавить</button>
 							</form>
+							<br/>
+							<hr/>
 							<table>
 							<tr>
 								<th scope="col">ID физического лица</th>
@@ -413,6 +440,7 @@ app.get('/organisation_phone_number_db', async function(req, res) {
 		<!DOCTYPE html>
 		<html lang="ru">
 			<head>
+				<title>Веб-интерфейс базы данных</title>
 				<link rel="stylesheet" href="styles.css" />
 				<nav>
 					<form method="get" action="/main_menu">
@@ -430,6 +458,7 @@ app.get('/organisation_phone_number_db', async function(req, res) {
 				<main>
 					<article>
 						<section>
+							<span>Добавление номеров организации</span>
 							<form method="post" action="/add_orgPN">
 								<input type="text" placeholder="Номер организации" name="organisationPhoneNumber" required/>
 								<select name="PN_organisationName" id="PN_organisationName" required>
@@ -438,6 +467,8 @@ app.get('/organisation_phone_number_db', async function(req, res) {
 								</select>
 								<button type = submit>Добавить</button>
 							</form>
+							<br/>
+							<hr/>
 							<table>
 							<tr>
 								<th scope="col">Номер телефона организации</th>
@@ -490,6 +521,7 @@ app.get('/city_phone_codes', async  function(req, res) {
 	<!DOCTYPE html>
 	<html lang="ru">
 		<head>
+			<title>Веб-интерфейс базы данных</title>
 			<link rel="stylesheet" href="styles.css" />
 			<nav>
 				<form method="get" action="/main_menu">
@@ -538,6 +570,7 @@ app.get('/city_selection', async function(req, res) {
 	<!DOCTYPE html>
 	<html lang="ru">
 		<head>
+			<title>Веб-интерфейс базы данных</title>
 			<link rel="stylesheet" href="styles.css" />
 			<nav>
 				<form method="get" action="/main_menu">
@@ -589,6 +622,7 @@ app.get('/person_of_the_city', async function(req, res) {
 	<!DOCTYPE html>
 	<html lang="ru">
 		<head>
+			<title>Веб-интерфейс базы данных</title>
 			<link rel="stylesheet" href="styles.css" />
 		</head>
 		<body>
@@ -651,6 +685,7 @@ app.get('/cities_and_organisations', async function(req, res) {
 	<!DOCTYPE html>
 	<html lang="ru">
 		<head>
+			<title>Веб-интерфейс базы данных</title>
 			<link rel="stylesheet" href="styles.css" />
 			<nav>
 				<form method="get" action="/main_menu">
@@ -711,6 +746,7 @@ app.get('/category_selection', async function(req, res) {
 	<!DOCTYPE html>
 	<html lang="ru">
 		<head>
+			<title>Веб-интерфейс базы данных</title>
 			<link rel="stylesheet" href="styles.css" />
 			<nav>
 				<form method="get" action="/main_menu">
@@ -771,7 +807,8 @@ app.get('/organisation_of_the_category', async function(req, res) {
 		res.send(`
 		<!DOCTYPE html>
 		<html lang="ru">
-			<head>
+			<head>	
+				<title>Веб-интерфейс базы данных</title>
 				<link rel="stylesheet" href="styles.css" />
 			</head>
 			<body>
@@ -817,4 +854,4 @@ app.get('/organisation_of_the_category', async function(req, res) {
 
 app.listen(3000, function() {
 	console.log('Server started :3');
-})
+});
